@@ -1,0 +1,198 @@
+<!--(c) Iwan -->
+<!--NumeX-->
+
+<html>
+
+    <head>
+
+        <style>
+
+            @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+            *
+
+            {
+
+                margin: 0;
+
+                padding: 0;
+
+                box-sizing: border-box;
+
+            }
+
+            body
+
+            {
+
+                width: 100%;
+
+                min-height: 100vh;
+
+                display: flex;
+
+                align-items: center;
+
+                justify-content: center;
+
+                background: #000;
+
+                overflow: hidden;
+
+            }
+
+            .running
+
+            {
+
+                position: absolute;
+
+                top: 50%;
+
+                left: 50%;
+
+                transform: translate(-50%,-50%);
+
+                width: 100%;
+
+                height: 80vh;
+
+                white-space: nowrap;
+
+                display: flex;
+
+                align-items: center;
+
+                line-height: 80vh;
+
+                transition: 1s;
+
+                animation: hue 10s infinite forwards;
+
+                animation-delay: calc(0.2s * var(--i));
+
+            }
+
+            @keyframes hue 
+
+            {
+
+                0%
+
+                {
+
+                    filter: hue-rotate(0deg);
+
+                }
+
+                100%
+
+                {
+
+                    filter: hue-rotate(360deg);
+
+                }
+
+            }
+
+            .running span 
+
+            {
+
+                color: #fff;
+
+                font-size: 50rem;
+
+                font-family: 'Alfa Slab One', cursive;
+
+                color: transparent;
+
+                -webkit-text-stroke:8px red;
+
+                animation: kiri 120S infinite linear;
+
+            }
+
+            @keyframes kiri 
+
+            {
+
+                0%
+
+                {
+
+                    transform: translateX(2500px);
+
+                    filter: hue-rotate(0deg);
+
+                }
+
+                100%
+
+                {
+
+                    transform: translateX(-100000px);
+
+                    filter: hue-rotate(360deg);
+
+                }
+
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="running"></div>
+
+        <script>
+
+            let app = document.querySelector('.running');
+
+            let text = 'MALU DONG BOSS UDAH GEDE MAIN EPEP';
+
+            let arr = text.split('');
+
+            function stringHasTheWhiteSpaceOrNot(value)
+
+            {
+
+                return value.indexOf(' ') >= 0;
+
+            }
+
+            arr.forEach(function(i,v){
+
+                ++v;
+
+                let create = document.createElement('span');
+
+                var whiteSpace=stringHasTheWhiteSpaceOrNot(i);
+
+                if(whiteSpace==true){
+
+                    create.innerHTML += '&nbsp;';
+
+                    create.style.cssText += '3px';
+
+                } else {
+
+                    create.innerText += i;
+
+                    create.style.cssText += '--i:'+v+';';
+
+                }
+
+                app.appendChild(create);
+
+                console.log(v)
+
+            })
+
+        </script>
+
+    </body>
+
+</html>
